@@ -1,29 +1,35 @@
-# Welcome to your Lovable project
+# Infinite Healthy Yumm — Desotiq
 
-This project was built with [Lovable](https://lovable.dev).
+Premium healthy cafe and meal subscription platform in Moshi, Pune. Cold-pressed juices, protein-packed salads, and power bowls — everything made to order.
 
-## Build with Lovable
+## Tech Stack
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- **Framework**: [TanStack Start](https://tanstack.com/start)
+- **Frontend**: React 19, Tailwind CSS v4, Lucide Icons, Framer Motion
+- **Database & Auth**: Supabase (@supabase/ssr, PostgreSQL)
+- **Deployment**: Nitro (Cloudflare Pages / Workers preset)
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Getting Started
 
-## Development
+### Prerequisites
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- Node.js >= 20
+- npm
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-## Built with
+### Available Scripts
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+- `npm run dev`: Starts the local dev server on http://localhost:8080
+- `npm run build`: Builds the production client and SSR worker bundle
+- `npm run preview`: Previews the production build locally
+- `npm run lint`: Runs ESLint checks across the project
+- `npm run format`: Formats code with Prettier

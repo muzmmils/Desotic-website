@@ -1,12 +1,9 @@
-<!-- LOVABLE:BEGIN -->
+# Infinite Healthy Yumm / Desotiq Platform
 
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-
-<!-- LOVABLE:END -->
+## Architecture & Stack
+- **Framework**: TanStack Start (SSR on Vite)
+- **UI & Styling**: React 19, Tailwind CSS v4, Lucide React, Framer Motion
+- **State Management**: Zustand, TanStack Query
+- **Backend & Database**: Supabase (@supabase/ssr, PostgreSQL, Edge Functions)
+- **Deploy Target**: Cloudflare Pages / Workers (via Nitro)
+- **Verification**: `npm run lint`, `npx tsc --noEmit`, `npm run build`

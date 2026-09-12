@@ -12,7 +12,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import "@fontsource-variable/inter";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/SiteHeader";
 import { initSentry } from "../lib/sentry";
 
@@ -43,7 +42,6 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   useEffect(() => {
     const err = error instanceof Error ? error : new Error(String(error));
     console.error(err);
-    reportLovableError(err, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
