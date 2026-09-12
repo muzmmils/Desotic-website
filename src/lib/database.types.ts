@@ -1,0 +1,360 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+
+export type SubscriptionStatus = "active" | "paused" | "cancelled" | "past_due" | "trialing";
+export type OrderStatus =
+  "pending" | "confirmed" | "preparing" | "ready" | "out_for_delivery" | "delivered" | "cancelled";
+export type PaymentStatus = "unpaid" | "paid" | "failed" | "refunded";
+
+export interface Database {
+  public: {
+    Tables: {
+      categories: {
+        Row: {
+          id: string;
+          name: string;
+          slug: string;
+          description: string | null;
+          emoji: string | null;
+          image_url: string | null;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          slug: string;
+          description?: string | null;
+          emoji?: string | null;
+          image_url?: string | null;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          slug?: string;
+          description?: string | null;
+          emoji?: string | null;
+          image_url?: string | null;
+          sort_order?: number;
+          created_at?: string;
+        };
+      };
+      menu_items: {
+        Row: {
+          id: string;
+          category_id: string;
+          name: string;
+          slug: string;
+          description: string | null;
+          price: number;
+          image_url: string | null;
+          calories: number | null;
+          protein_g: number | null;
+          carbs_g: number | null;
+          fat_g: number | null;
+          fiber_g: number | null;
+          is_vegan: boolean;
+          is_gluten_free: boolean;
+          is_available: boolean;
+          tags: string[];
+          ingredients: string[];
+          customization_options: Json | null;
+          prep_time_minutes: number;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          category_id: string;
+          name: string;
+          slug: string;
+          description?: string | null;
+          price: number;
+          image_url?: string | null;
+          calories?: number | null;
+          protein_g?: number | null;
+          carbs_g?: number | null;
+          fat_g?: number | null;
+          fiber_g?: number | null;
+          is_vegan?: boolean;
+          is_gluten_free?: boolean;
+          is_available?: boolean;
+          tags?: string[];
+          ingredients?: string[];
+          customization_options?: Json | null;
+          prep_time_minutes?: number;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          category_id?: string;
+          name?: string;
+          slug?: string;
+          description?: string | null;
+          price?: number;
+          image_url?: string | null;
+          calories?: number | null;
+          protein_g?: number | null;
+          carbs_g?: number | null;
+          fat_g?: number | null;
+          fiber_g?: number | null;
+          is_vegan?: boolean;
+          is_gluten_free?: boolean;
+          is_available?: boolean;
+          tags?: string[];
+          ingredients?: string[];
+          customization_options?: Json | null;
+          prep_time_minutes?: number;
+          sort_order?: number;
+          created_at?: string;
+        };
+      };
+      profiles: {
+        Row: {
+          id: string;
+          full_name: string | null;
+          phone: string | null;
+          avatar_url: string | null;
+          address: Json | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id: string;
+          full_name?: string | null;
+          phone?: string | null;
+          avatar_url?: string | null;
+          address?: Json | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          full_name?: string | null;
+          phone?: string | null;
+          avatar_url?: string | null;
+          address?: Json | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      subscription_plans: {
+        Row: {
+          id: string;
+          name: string;
+          slug: string;
+          description: string | null;
+          price_monthly: number;
+          price_quarterly: number | null;
+          meals_per_week: number;
+          features: Json | null;
+          is_popular: boolean;
+          is_active: boolean;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          slug: string;
+          description?: string | null;
+          price_monthly: number;
+          price_quarterly?: number | null;
+          meals_per_week: number;
+          features?: Json | null;
+          is_popular?: boolean;
+          is_active?: boolean;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          slug?: string;
+          description?: string | null;
+          price_monthly?: number;
+          price_quarterly?: number | null;
+          meals_per_week?: number;
+          features?: Json | null;
+          is_popular?: boolean;
+          is_active?: boolean;
+          sort_order?: number;
+          created_at?: string;
+        };
+      };
+      subscriptions: {
+        Row: {
+          id: string;
+          user_id: string;
+          plan_id: string;
+          status: SubscriptionStatus;
+          billing_cycle: string;
+          payment_provider: string | null;
+          payment_provider_sub_id: string | null;
+          current_period_start: string;
+          current_period_end: string;
+          delivery_days: string[];
+          delivery_slot: string;
+          delivery_address: Json | null;
+          pause_started_at: string | null;
+          pause_resume_date: string | null;
+          cancelled_at: string | null;
+          cancel_reason: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          plan_id: string;
+          status?: SubscriptionStatus;
+          billing_cycle?: string;
+          payment_provider?: string | null;
+          payment_provider_sub_id?: string | null;
+          current_period_start?: string;
+          current_period_end: string;
+          delivery_days?: string[];
+          delivery_slot?: string;
+          delivery_address?: Json | null;
+          pause_started_at?: string | null;
+          pause_resume_date?: string | null;
+          cancelled_at?: string | null;
+          cancel_reason?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          plan_id?: string;
+          status?: SubscriptionStatus;
+          billing_cycle?: string;
+          payment_provider?: string | null;
+          payment_provider_sub_id?: string | null;
+          current_period_start?: string;
+          current_period_end?: string;
+          delivery_days?: string[];
+          delivery_slot?: string;
+          delivery_address?: Json | null;
+          pause_started_at?: string | null;
+          pause_resume_date?: string | null;
+          cancelled_at?: string | null;
+          cancel_reason?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      orders: {
+        Row: {
+          id: string;
+          order_number: string;
+          user_id: string;
+          subscription_id: string | null;
+          status: OrderStatus;
+          subtotal: number;
+          tax: number;
+          delivery_fee: number;
+          discount: number;
+          total: number;
+          delivery_date: string;
+          delivery_slot: string;
+          delivery_address: Json;
+          payment_provider: string | null;
+          payment_status: PaymentStatus;
+          payment_id: string | null;
+          razorpay_order_id: string | null;
+          notes: string | null;
+          estimated_delivery_time: string | null;
+          delivered_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          order_number: string;
+          user_id: string;
+          subscription_id?: string | null;
+          status?: OrderStatus;
+          subtotal?: number;
+          tax?: number;
+          delivery_fee?: number;
+          discount?: number;
+          total: number;
+          delivery_date: string;
+          delivery_slot?: string;
+          delivery_address: Json;
+          payment_provider?: string | null;
+          payment_status?: PaymentStatus;
+          payment_id?: string | null;
+          razorpay_order_id?: string | null;
+          notes?: string | null;
+          estimated_delivery_time?: string | null;
+          delivered_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          order_number?: string;
+          user_id?: string;
+          subscription_id?: string | null;
+          status?: OrderStatus;
+          subtotal?: number;
+          tax?: number;
+          delivery_fee?: number;
+          discount?: number;
+          total?: number;
+          delivery_date?: string;
+          delivery_slot?: string;
+          delivery_address?: Json;
+          payment_provider?: string | null;
+          payment_status?: PaymentStatus;
+          payment_id?: string | null;
+          razorpay_order_id?: string | null;
+          notes?: string | null;
+          estimated_delivery_time?: string | null;
+          delivered_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      order_items: {
+        Row: {
+          id: string;
+          order_id: string;
+          menu_item_id: string;
+          item_name: string;
+          quantity: number;
+          unit_price: number;
+          total_price: number;
+          customizations: Json | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          order_id: string;
+          menu_item_id: string;
+          item_name: string;
+          quantity?: number;
+          unit_price: number;
+          total_price: number;
+          customizations?: Json | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          order_id?: string;
+          menu_item_id?: string;
+          item_name?: string;
+          quantity?: number;
+          unit_price?: number;
+          total_price?: number;
+          customizations?: Json | null;
+          created_at?: string;
+        };
+      };
+    };
+  };
+}
