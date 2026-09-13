@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Infinite Healthy Yumm design system — dark premium mood.
+ * Desotiq design system — Bold Contrast cinematic palette.
  * All colors are oklch semantic tokens. Never hardcode colors in components.
  */
 
@@ -39,58 +39,83 @@
   --color-ring-offset-background: var(--background);
   --color-surface: var(--surface);
   --color-footer: var(--footer);
-  --color-philosophy: var(--philosophy);
   --color-gold: var(--gold);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-coral: var(--coral);
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 :root {
   --radius: 0.75rem;
 
-  --background: oklch(0.15 0.01 240);
-  --foreground: oklch(0.95 0.01 100);
+  /* Bold Contrast palette — cinematic dark with vivid pops */
+  --background: oklch(0.08 0.005 260);
+  --foreground: oklch(0.97 0.005 100);
 
-  --surface: oklch(0.2 0.02 240);
-  --card: oklch(0.2 0.02 240);
-  --card-foreground: oklch(0.95 0.01 100);
-  --popover: oklch(0.2 0.02 240);
-  --popover-foreground: oklch(0.95 0.01 100);
+  --surface: oklch(0.12 0.01 260);
+  --card: oklch(0.12 0.01 260);
+  --card-foreground: oklch(0.97 0.005 100);
+  --popover: oklch(0.12 0.01 260);
+  --popover-foreground: oklch(0.97 0.005 100);
 
-  --primary: oklch(0.62 0.15 150);
-  --primary-foreground: oklch(0.15 0.01 240);
-  --primary-glow: oklch(0.62 0.15 150 / 0.3);
-  --primary-soft: oklch(0.62 0.15 150 / 0.25);
-  --primary-line: oklch(0.62 0.15 150 / 0.3);
+  /* Vivid emerald — punchier than before */
+  --primary: oklch(0.72 0.19 150);
+  --primary-foreground: oklch(0.08 0.005 260);
+  --primary-glow: oklch(0.72 0.19 150 / 0.3);
+  --primary-soft: oklch(0.72 0.19 150 / 0.2);
+  --primary-line: oklch(0.72 0.19 150 / 0.25);
 
-  --secondary: oklch(0.24 0.02 240);
-  --secondary-foreground: oklch(0.95 0.01 100);
-  --muted: oklch(0.24 0.02 240);
-  --muted-foreground: oklch(0.65 0.02 100);
+  --secondary: oklch(0.18 0.01 260);
+  --secondary-foreground: oklch(0.97 0.005 100);
+  --muted: oklch(0.18 0.01 260);
+  --muted-foreground: oklch(0.6 0.02 100);
 
-  --accent: oklch(0.78 0.12 85);
-  --accent-foreground: oklch(0.15 0.01 240);
-  --gold: oklch(0.78 0.12 85);
+  /* Bright gold accent */
+  --accent: oklch(0.82 0.15 85);
+  --accent-foreground: oklch(0.08 0.005 260);
+  --gold: oklch(0.82 0.15 85);
+
+  /* Warm coral for CTAs and urgency */
+  --coral: oklch(0.68 0.18 25);
 
   --destructive: oklch(0.6 0.2 27);
-  --destructive-foreground: oklch(0.95 0.01 100);
+  --destructive-foreground: oklch(0.97 0.005 100);
 
-  --border: oklch(0.3 0.02 240);
-  --input: oklch(0.3 0.02 240);
-  --ring: oklch(0.62 0.15 150);
+  --border: oklch(0.22 0.01 260);
+  --input: oklch(0.22 0.01 260);
+  --ring: oklch(0.72 0.19 150);
 
-  --footer: oklch(0.1 0.01 240);
-  --philosophy: oklch(0.18 0.02 150);
-  --hero-center: oklch(0.25 0.08 150);
+  --footer: oklch(0.05 0.005 260);
 
+  /* Hero glow layers */
+  --hero-glow: oklch(0.45 0.12 150);
+  --hero-center: oklch(0.18 0.06 150);
+
+  /* Gradient presets */
   --gradient-hero: radial-gradient(
     ellipse at 50% 40%,
     var(--hero-center) 0%,
-    oklch(0.19 0.04 190) 45%,
+    oklch(0.12 0.03 190) 45%,
     var(--background) 100%
   );
-  --shadow-dish: 0 20px 60px oklch(0.62 0.15 150 / 0.25);
-  --shadow-dish-lg: 0 30px 90px oklch(0.62 0.15 150 / 0.3);
-  --shadow-glow: 0 0 32px oklch(0.62 0.15 150 / 0.35);
+  --gradient-video-overlay: linear-gradient(
+    to bottom,
+    oklch(0.08 0.005 260 / 0.3) 0%,
+    oklch(0.08 0.005 260 / 0.6) 50%,
+    oklch(0.08 0.005 260 / 0.9) 100%
+  );
+  --gradient-video-top: linear-gradient(to bottom, oklch(0.08 0.005 260 / 0.7) 0%, transparent 40%);
+  --gradient-video-bottom: linear-gradient(
+    to top,
+    oklch(0.08 0.005 260 / 0.95) 0%,
+    transparent 50%
+  );
+
+  /* Shadows */
+  --shadow-dish: 0 20px 60px oklch(0.72 0.19 150 / 0.2);
+  --shadow-dish-lg: 0 30px 90px oklch(0.72 0.19 150 / 0.25);
+  --shadow-glow: 0 0 40px oklch(0.72 0.19 150 / 0.35);
+  --shadow-coral-glow: 0 0 40px oklch(0.68 0.18 25 / 0.3);
 }
 
 @layer base {
@@ -98,9 +123,7 @@
     border-color: var(--color-border);
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  /* html smooth scrolling removed to prevent conflict with Framer Motion scroll hooks */
 
   body {
     background-color: var(--color-background);
@@ -110,7 +133,31 @@
   }
 }
 
-/* Ambient drifting particles (hero) — never scroll-linked. */
+/* Glassmorphism utility */
+@utility glass {
+  background: oklch(0.12 0.01 260 / 0.6);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid oklch(0.97 0.005 100 / 0.08);
+}
+
+/* Gradient text clip utility */
+@utility text-gradient {
+  background: linear-gradient(to bottom, oklch(0.97 0.005 100) 0%, oklch(0.75 0.01 100) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Emerald gradient text */
+@utility text-gradient-emerald {
+  background: linear-gradient(135deg, oklch(0.72 0.19 150) 0%, oklch(0.62 0.15 160) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ambient drifting particles — never scroll-linked. */
 @keyframes drift {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
@@ -130,6 +177,21 @@
   }
 }
 
+/* Subtle glow pulse for CTA buttons */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px oklch(0.72 0.19 150 / 0.3),
+      0 0 60px oklch(0.72 0.19 150 / 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px oklch(0.72 0.19 150 / 0.5),
+      0 0 80px oklch(0.72 0.19 150 / 0.2);
+  }
+}
+
 @utility particle {
   position: absolute;
   will-change: transform;
@@ -139,8 +201,16 @@
   pointer-events: none;
 }
 
+@utility glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .particle {
+    animation: none;
+  }
+
+  .glow-pulse {
     animation: none;
   }
 

@@ -1,18 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BASE_URL } from "@/lib/constants";
-import { Hero } from "@/components/landing/Hero";
-import { SaladSection } from "@/components/landing/SaladSection";
-import { JuiceSection } from "@/components/landing/JuiceSection";
-import { OatmealSection } from "@/components/landing/OatmealSection";
-import { PhilosophySection } from "@/components/landing/PhilosophySection";
-import { CategorySection } from "@/components/landing/CategorySection";
-import { SubscriptionCTA } from "@/components/landing/SubscriptionCTA";
-import { LocationSection } from "@/components/landing/LocationSection";
-import { SiteFooter } from "@/components/landing/SiteFooter";
+import { VideoHero } from "@/components/landing/VideoHero";
+import { ProblemPromise } from "@/components/landing/ProblemPromise";
+import { ProductShowcase } from "@/components/landing/ProductShowcase";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { SocialProof } from "@/components/landing/SocialProof";
+import { FinalCTA } from "@/components/landing/FinalCTA";
+import { CinematicFooter } from "@/components/landing/CinematicFooter";
 
-const TITLE = "Infinite Healthy Yumm — Healthy bhi! Tasty bhi! | Pune";
+const TITLE = "Desotiq — Eat Clean. Live Bold. | Pune";
 const DESCRIPTION =
-  "Premium healthy cafe in Moshi, Pune. Cold-pressed juices, protein-packed salads, power oatmeal bowls — everything made to order. Visit us at High Street Mall.";
+  "Premium healthy food subscriptions in Pune. Chef-crafted salad bowls, cold-pressed juices, and power oatmeal — delivered fresh daily. Your first box is free.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,12 +32,17 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Restaurant",
-          name: "Infinite Healthy Yumm",
-          description: "Premium healthy cafe — cold-pressed juices, protein salads, power bowls",
-          servesCuisine: "Healthy",
-          url: "https://infinitehealthyyumm.com",
-          menu: "https://infinitehealthyyumm.com/menu",
+          "@type": "FoodService",
+          name: "Desotiq",
+          alternateName: "Infinite Healthy Yumm",
+          description:
+            "Premium healthy food subscription — chef-crafted salads, cold-pressed juices, power bowls delivered fresh daily in Pune",
+          url: "https://desotiq.com",
+          areaServed: {
+            "@type": "City",
+            name: "Pune",
+            "@id": "https://www.wikidata.org/wiki/Q1538",
+          },
           address: {
             "@type": "PostalAddress",
             streetAddress: "High Street Mall, Moshi",
@@ -72,17 +75,15 @@ export const Route = createFileRoute("/")({
 function Landing() {
   return (
     <>
-      <main className="overflow-x-clip">
-        <Hero />
-        <SaladSection />
-        <JuiceSection />
-        <OatmealSection />
-        <PhilosophySection />
-        <CategorySection />
-        <SubscriptionCTA />
-        <LocationSection />
+      <main className="overflow-x-clip bg-background">
+        <VideoHero />
+        <ProblemPromise />
+        <ProductShowcase />
+        <HowItWorks />
+        <SocialProof />
+        <FinalCTA />
       </main>
-      <SiteFooter />
+      <CinematicFooter />
     </>
   );
 }

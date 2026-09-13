@@ -12,7 +12,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import "@fontsource-variable/inter";
+import "@fontsource-variable/playfair-display";
 import { SiteHeader } from "../components/SiteHeader";
+import { CinematicHeader } from "../components/landing/CinematicHeader";
 import { initSentry } from "../lib/sentry";
 
 function NotFoundComponent() {
@@ -80,13 +82,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Infinite Healthy Yumm — Healthy bhi! Tasty bhi! | Pune" },
+      { title: "Desotiq — Eat Clean. Live Bold. | Pune" },
       {
         name: "description",
         content:
-          "Premium healthy cafe in Moshi, Pune. Cold-pressed juices, protein-packed salads and power bowls — everything made to order.",
+          "Premium healthy food subscriptions in Pune. Chef-crafted salads, cold-pressed juices, and power bowls — delivered fresh daily.",
       },
-      { property: "og:site_name", content: "Infinite Healthy Yumm" },
+      { property: "og:site_name", content: "Desotiq" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -127,9 +129,20 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader />
+      <RootLayout />
+    </QueryClientProvider>
+  );
+}
+
+function RootLayout() {
+  const pathname = useRouter().state.location.pathname;
+  const isLanding = pathname === "/";
+
+  return (
+    <>
+      {isLanding ? <CinematicHeader /> : <SiteHeader />}
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-    </QueryClientProvider>
+    </>
   );
 }
